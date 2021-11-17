@@ -2,14 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAlbumsFetch } from "../store/albums";
 
+import Card from "../components/Card";
+
+import Spinner from "../components/Spinner";
+
+import { Route } from "react-router-dom";
+
 const Albums = () => {
   const [offSet, setOffset] = useState(0);
 
   const token = useSelector((state) => state.auth.accessToken?.access_token);
 
-  const albums = useSelector((state) => state.albums);
+  const albumState = useSelector((state) => state.albums);
+  const album = albumState.album;
 
-  console.log("ALBUMS", albums);
+  console.log("ALBUMS", album);
   console.log(token);
 
   const dispatch = useDispatch();
@@ -17,7 +24,11 @@ const Albums = () => {
     token && dispatch(getAlbumsFetch({ token, offSet }));
   }, [token]);
 
-  return <div>Albums</div>;
+  return albumState.isLoading || !album ? (
+    <Spinner />
+  ) : (
+    <Card token={token} item={album} />
+  );
 };
 
 export default Albums;
