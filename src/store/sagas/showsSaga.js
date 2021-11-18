@@ -4,7 +4,6 @@ import { getShowsFetch } from "../shows";
 import { getShowsSuccess } from "../shows";
 
 function* workGetShowsFetch({ payload }) {
-  console.log("SHOWS_PAYLOAD", payload);
   try {
     const shows = yield call(() => {
       return fetch(`${showsApi}`, {
@@ -16,8 +15,6 @@ function* workGetShowsFetch({ payload }) {
       });
     });
     const formattedShows = yield shows.json();
-    console.log("RAW_SHOWS", shows);
-    console.log("FORMATTED_SHOWS", formattedShows);
     yield put(getShowsSuccess(formattedShows));
   } catch (e) {
     console.log("FETCH SHOWS HATA", e);

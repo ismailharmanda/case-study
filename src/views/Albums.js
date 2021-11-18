@@ -16,9 +16,6 @@ const Albums = () => {
   const albumState = useSelector((state) => state.albums);
   const album = albumState.album;
 
-  console.log("ALBUMS", album);
-  console.log(token);
-
   const dispatch = useDispatch();
   useEffect(() => {
     token && dispatch(getAlbumsFetch({ token, offSet }));

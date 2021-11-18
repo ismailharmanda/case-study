@@ -5,7 +5,7 @@ export const tracksSlice = createSlice({
   initialState: {
     isLoading: false,
     tracks: [],
-    currentTracks: null,
+    currentTracks: {},
   },
   reducers: {
     getTracksFetch(state) {
@@ -13,16 +13,23 @@ export const tracksSlice = createSlice({
     },
     getTracksSuccess(state, action) {
       state.isLoading = false;
-      state.tracks = action.payload.items;
+      state.tracks = [...state.tracks, ...action.payload.items];
       state.currentTracks = action.payload;
     },
     getTracksFailed(state) {
       state.isLoading = false;
     },
+    cleanTracks(state) {
+      state.tracks = [];
+    },
   },
 });
 
-export const { getTracksFetch, getTracksSuccess, getTracksFailed } =
-  tracksSlice.actions;
+export const {
+  getTracksFetch,
+  getTracksSuccess,
+  getTracksFailed,
+  cleanTracks,
+} = tracksSlice.actions;
 
 export default tracksSlice;

@@ -31,3 +31,7 @@ export const msToMinutesAndSeconds = (ms) => {
   const seconds = ((ms % 60000) / 1000).toFixed(0);
   return minutes + " min " + (seconds < 10 ? "0" : "") + seconds + " sec";
 };
+
+export const getShortenedText = (text) => {
+  return text.slice(0, 150) + "...";
+};

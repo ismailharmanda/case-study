@@ -3,7 +3,6 @@ import { getEpisodesFetch } from "../episodes";
 import { getEpisodesSuccess } from "../episodes";
 
 function* workGetEpisodesFetch({ payload }) {
-  console.log("EPISODES_PAYLOAD", payload);
   try {
     const episodes = yield call(() => {
       return fetch(
@@ -18,7 +17,6 @@ function* workGetEpisodesFetch({ payload }) {
       );
     });
     const formattedEpisodes = yield episodes.json();
-    console.log("FORMATTED_EPISODES", formattedEpisodes);
     yield put(getEpisodesSuccess(formattedEpisodes));
   } catch (e) {
     console.log("FETCH EPISODES HATA", e);

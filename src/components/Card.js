@@ -34,12 +34,7 @@ const Card = ({ item, token }) => {
       >
         <div className="row g-0 text-center text-sm-start">
           <div className="col-sm-3">
-            <img
-              style={{ height: "200px", width: "200px" }}
-              src={url}
-              className="img-fluid rounded-start"
-              alt={type}
-            />
+            <img src={url} className="img-fluid rounded-start" alt={type} />
           </div>
           <div className="col-sm-9">
             <div className="card-body">

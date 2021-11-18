@@ -4,7 +4,6 @@ import { getAlbumsFetch } from "../albums";
 import { getAlbumsSuccess } from "../albums";
 
 function* workGetAlbumsFetch({ payload }) {
-  console.log("ALBUMS_PAYLOAD", payload);
   try {
     const albums = yield call(() => {
       return fetch(`${albumsApi}?offset=${payload.offSet}&limit=20`, {
@@ -16,7 +15,6 @@ function* workGetAlbumsFetch({ payload }) {
       });
     });
     const formattedAlbums = yield albums.json();
-    console.log("FORMATTED_ALBUMS", formattedAlbums);
     yield put(getAlbumsSuccess(formattedAlbums));
   } catch (e) {
     console.log("FETCH ALBUMS HATA", e);

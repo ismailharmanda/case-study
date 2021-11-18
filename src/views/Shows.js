@@ -14,8 +14,6 @@ const Shows = () => {
   const showState = useSelector((state) => state.shows);
   const show = showState.show;
 
-  console.log("SHOWS", showState);
-
   const dispatch = useDispatch();
   useEffect(() => {
     token && dispatch(getShowsFetch({ token, offSet }));
