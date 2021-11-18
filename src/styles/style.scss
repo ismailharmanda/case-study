@@ -33,15 +33,26 @@ $screen-xl-min: 1200px;
   }
 }
 $primary-color: white;
+$secondary-color: black;
+$color-gray-light: rgba($primary-color, 0.15);
+$color-gray-dark: rgba($secondary-color, 0.15);
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
+:root {
+  --color-page-background: #{$primary-color};
+  --color-text: #{$secondary-color};
+}
+
 body {
   margin: 0;
   font-family: "rubik", "sans-serif";
   overflow-x: hidden;
+  background-color: var(--color-page-background);
+  color: var(--color-text);
 }
 
 // Clean default margins and paddings in order to style cleaner
@@ -75,13 +86,27 @@ nav {
   }
 }
 
+hr {
+  color: var(--color-text);
+}
 .card {
+  background-color: var(--color-page-background);
+  border-color: var(--color-text);
   &:hover {
     cursor: pointer;
-    background-color: darken($primary-color, 5);
+    background-color: darken($primary-color, 50);
   }
   img {
     height: 200px;
     width: 200px;
   }
+}
+
+#modeSwitcher {
+  cursor: pointer;
+}
+
+.dark-mode {
+  --color-page-background: #{$secondary-color};
+  --color-text: #{$primary-color};
 }
